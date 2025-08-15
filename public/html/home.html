@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste Dining - Authentic Nepali & Indian Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <script type="module" src="../js/home.js"></script>
+</head>
+<body>
+
+    <header class="header" role="banner">
+      <div class="container header-flex" style="position:relative;">
+        <nav class="navbar">
+          <button class="hamburger" aria-label="Open navigation" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#menu">Our Menu</a></li>
+            <li><a href="#gallery">Food Gallery</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div id="googleLoginContainer" style="position:absolute; top:20px; right:20px; z-index:100;">
+          <button type="button" id="googleBtn" class="google-login-btn">
+            <span class="google-icon" style="vertical-align: middle; margin-right: 8px;">
+              <svg width="32" height="32" viewBox="0 0 48 48" style="vertical-align: middle;">
+                <g>
+                  <circle cx="24" cy="24" r="24" fill="#EA4335"/>
+                  <path d="M34.6 24.3c0-1.1-.1-2.1-.3-3.1H24v5.9h6c-.3 1.6-1.3 2.9-2.7 3.8v3.1h4.4c2.6-2.4 4.1-5.9 4.1-9.7z" fill="#fff"/>
+                  <path d="M24 38c3.2 0 5.9-1.1 7.9-3l-4.4-3.1c-1.2.8-2.7 1.3-4.3 1.3-3.3 0-6.1-2.2-7.1-5.2h-4.5v3.2C13.9 35.8 18.6 38 24 38z" fill="#fff"/>
+                  <path d="M16.9 28.1c-.3-.8-.5-1.7-.5-2.6s.2-1.8.5-2.6v-3.2h-4.5C11.6 21.8 11 23.8 11 26s.6 4.2 1.4 6l4.5-3.2z" fill="#fff"/>
+                  <path d="M24 18.7c1.7 0 3.2.6 4.4 1.7l3.3-3.3C29.9 15.1 27.2 14 24 14c-5.4 0-10.1 2.2-13.1 5.7l4.5 3.2c1-3 3.8-5.2 7.1-5.2z" fill="#fff"/>
+                </g>
+              </svg>
+            </span>
+            Login with Google
+          </button>
+        </div>
+        <div id="profileContainer" style="display:none; position:absolute; top:20px; right:20px; z-index:100;">
+          <button id="profileBtn" style="background:#EA4335; border:none; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.7rem; cursor:pointer; box-shadow:0 4px 16px rgba(234,67,53,0.15);">
+            <i class="fas fa-user"></i>
+          </button>
+          <span id="profileEmail" style="display:block; margin-top:8px; color:#fff; font-size:0.95rem;"></span>
+        </div>
+      </div>
+      <!-- Toast Container for notifications -->
+      <div id="toast-container" style="position:fixed;top:20px;right:20px;z-index:2000;display:flex;flex-direction:column;gap:12px;pointer-events:none;"></div>
+      <!-- Modal Overlay for popups -->
+      <div id="modal-overlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,30,0.85);z-index:2001;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
+        <div id="modal-content" style="background:#fff;border-radius:18px;max-width:480px;width:90vw;padding:32px;box-shadow:0 8px 32px rgba(30,30,30,0.18);position:relative;">
+          <button id="modal-close" style="position:absolute;top:18px;right:18px;background:#eee;border:none;border-radius:50%;width:36px;height:36px;font-size:1.3rem;cursor:pointer;">&times;</button>
+          <h2 id="modal-title" style="margin-bottom:18px;font-size:1.3rem;color:#22223b;"></h2>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+    </header>
+  <!-- ...existing code... -->
+
+    <main>
+    <section id="home" class="hero" aria-label="Welcome Section">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="namaste-crimson" style="display:block;line-height:1.05;margin-bottom:0;">Namaste</span>
+                <span class="namaste-crimson" style="display:block;line-height:1.05;margin-top:0;">Dining</span>
+            </h1>
+            <p class="hero-subtitle">Authentic Nepali &amp; Indian Cuisine</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary hero-btn">
+                    <span>View Menu</span>
+                    <i class="fas fa-utensils"></i>
+                </a>
+                <a href="#reservation" class="btn btn-secondary hero-btn">
+                    <span>Order Now</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+        
+    </section>
+
+    <section id="about" class="section about-section" aria-label="About Us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">A journey of flavors from the Himalayas</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p> --  Founded in 2010, Namaste Grantham brings generations of culinary tradition to Lincolnshire. Our chefs masterfully blend authentic Nepali and Indian techniques with locally-sourced ingredients.</p>
+                    <p>  -- Every dish tells a story - from the Himalayan hills to the vibrant streets of Mumbai. We take pride in offering an unforgettable dining experience that celebrates the rich culinary heritage of South Asia.</p>
+                    <div class="signature">
+                        <p>--Prakash KC</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                  <div class="spice-bottle">
+                   <img src="../spice/625b43df-745e-4cc2-b753-5a84c46af4ff.png" alt="Spice Bottle" class="spice-img" />
+                  
+                  </div>
+                  <div class="spice-jar">
+                    <img src="../spice/475984294_651069330679758_5880158169352166868_n.jpg" alt="Spice Jar" class="spice-img" />
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section menu-section" aria-label="Menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Menu</h2>
+            
+                <div class="divider"></div>
+                <p class="section-subtitle">Explore our authentic flavors</p>
+            </div>
+            <div class="menu-tabs">
+                <div class="menu-tabs-scroll stylish-scroll" id="menuTabsScroll">
+                    
+                    <button class="tab-btn" data-category="appetizers">Appetizers</button>
+                    <button class="tab-btn" data-category="chefs-signature">Chef's Signature</button>
+                    <button class="tab-btn" data-category="main-courses">Main Courses</button>
+                    <button class="tab-btn" data-category="traditional-dishes">Traditional Dishes</button>
+                    <button class="tab-btn" data-category="biryani-dishes">Biryani Dishes</button>
+                    <button class="tab-btn" data-category="sides-accompaniments">Sides & Accompaniments</button>
+                    <button class="tab-btn" data-category="breads">Breads</button>
+                    <button class="tab-btn" data-category="set-meals-buffets">Set Meals & Buffets</button>
+                    <button class="tab-btn" data-category="drinks">Drinks</button>
+                    <button class="tab-btn" data-category="desserts">Desserts</button>
+                    
+                </div>
+            </div>
+            <p class="menu-instruction">Click on the tabs to view the menu</p>s
+            <div class="menu-grid" id="menu-tab-content">
+                <div class="loading-indicator" style="text-align:center;padding:2em;color:#bfa16c;">Loading menu...</div>
+            </div>
+            
+            
+            <script>
+            // Mouse drag horizontal scroll for menu tabs
+            document.addEventListener('DOMContentLoaded', function() {
+              const scrollContainer = document.getElementById('menuTabsScroll');
+              let isDown = false;
+              let startX;
+              let scrollLeft;
+              if (scrollContainer) {
+                scrollContainer.addEventListener('mousedown', (e) => {
+                  isDown = true;
+                  scrollContainer.classList.add('active');
+                  startX = e.pageX - scrollContainer.offsetLeft;
+                  scrollLeft = scrollContainer.scrollLeft;
+                });
+                scrollContainer.addEventListener('mouseleave', () => {
+                  isDown = false;
+                  scrollContainer.classList.remove('active');
+                });
+                scrollContainer.addEventListener('mouseup', () => {
+                  isDown = false;
+                  scrollContainer.classList.remove('active');
+                });
+                scrollContainer.addEventListener('mousemove', (e) => {
+                  if (!isDown) return;
+                  e.preventDefault();
+                  const x = e.pageX - scrollContainer.offsetLeft;
+                  const walk = (x - startX) * 2; // scroll speed
+                  scrollContainer.scrollLeft = scrollLeft - walk;
+                });
+              }
+
+              // Menu tab click logic
+              const tabBtns = document.querySelectorAll('.tab-btn');
+              const tabContent = document.getElementById('menu-tab-content');
+              
+              // Function to activate a tab
+              function activateTab(category) {
+                tabBtns.forEach(btn => {
+                  if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                    // Trigger click to load content
+                    btn.click();
+                  } else {
+                    btn.classList.remove('active');
+                  }
+                });
+              }
+              
+              // Set appetizers as default on page load
+              document.addEventListener('DOMContentLoaded', function() {
+                activateTab('appetizers');
+              });
+              
+              tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                  tabBtns.forEach(b => b.classList.remove('active'));
+                  btn.classList.add('active');
+                  if (btn.dataset.category === 'appetizers') {
+                    tabContent.innerHTML = `
+                      <div class="hotel-menu-columns">
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Vegetable Appetizers</h3>
+                          <div class='hotel-menu-list'>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Onion Bhaji <span class='hotel-menu-price'>£4.75</span></div>
+                              <div class='menu-card-desc'>Crispy nuggets of potato, onion, and coriander seeds deep-fried, served with a cucumber and carrot chutney. <span class='menu-card-allergen'>Contains egg.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Vegetable Samosa <span class='hotel-menu-price'>£4.75</span></div>
+                              <div class='menu-card-desc'>Crispy fried crushed samosa stuffed with potato, peas, and Nepalese spices, served with cucumber and carrots chutney. <span class='menu-card-allergen'>Contains gluten.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chilli Garlic Mushroom <span class='hotel-menu-price'>£4.95</span></div>
+                              <div class='menu-card-desc'>Herbs and spices-coated fresh mushrooms, sizzled with a hint of chili and garlic. <span class='menu-card-allergen'>Contains egg and gluten.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Honey Chilli Potato <span class='hotel-menu-price'>£4.95</span></div>
+                              <div class='menu-card-desc'>Deep-fried baby potatoes, coated with corn flour and tossed in a Szechuan sauce and honey. <span class='menu-card-allergen'>Contains egg.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Paneer Tikka <span class='hotel-menu-price'>£5.25</span></div>
+                              <div class='menu-card-desc'>Indian cottage cheese marinated with yogurt and spices, cooked in a clay oven. <span class='menu-card-allergen'>Contains dairy.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Momo (Vegetable) <span class='hotel-menu-price'>£5.75</span></div>
+                              <div class='menu-card-desc'>Dumplings served with tomato and sesame chutney, a popular Nepalese appetizer. (15-20 minute wait time). <span class='menu-card-allergen'>Contains gluten.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Crispy Bhajiya <span class='hotel-menu-price'>£5.75</span></div>
+                              <div class='menu-card-desc'>Fresh sliced potatoes battered with spices and deep-fried.</div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chilli Paneer <span class='hotel-menu-price'>£5.75</span></div>
+                              <div class='menu-card-desc'>Indian cheese topped with garlic, onion, and mixed peppers. <span class='menu-card-allergen'>Contains dairy.</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Meat Appetizers</h3>
+                          <div class='hotel-menu-list'>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Momo (Chicken) <span class='hotel-menu-price'>£5.95</span></div>
+                              <div class='menu-card-desc'>Dumplings served with tomato and sesame chutney, a popular Nepalese appetizer. (15-20 minute wait time). <span class='menu-card-allergen'>Contains gluten.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chicken Kofta <span class='hotel-menu-price'>£5.75</span></div>
+                              <div class='menu-card-desc'>Minced balls of chicken stir-fried with a chef's special sauce.</div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chicken Tikka <span class='hotel-menu-price'>£5.75</span></div>
+                              <div class='menu-card-desc'>Boneless chicken marinated with ginger, garlic, and coriander, served with cucumber and carrots chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Lamb Tikka <span class='hotel-menu-price'>£6.75</span></div>
+                              <div class='menu-card-desc'>Boneless lamb marinated with ginger, garlic, and coriander, served with cucumber and carrots chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Seekh Kebab <span class='hotel-menu-price'>£6.25</span></div>
+                              <div class='menu-card-desc'>Minced lamb and chicken marinated with ginger, garlic, and coriander, served with cucumber and carrot chutney. <span class='menu-card-allergen'>Contains egg.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Malai Tikka <span class='hotel-menu-price'>£6.75</span></div>
+                              <div class='menu-card-desc'>Marinated with fresh cream, yogurt, cheese, ginger, garlic, and cashew nuts, cooked in a clay oven. <span class='menu-card-allergen'>Contains nuts and dairy.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Lamb Chops <span class='hotel-menu-price'>£8.95</span></div>
+                              <div class='menu-card-desc'>Lamb chops marinated with garlic, ginger, crushed black pepper, yogurt, and mint, served with a cucumber chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Mixed Platter (Ideal For Two Persons) <span class='hotel-menu-price'>£12.95</span></div>
+                              <div class='menu-card-desc'>A selection of vegetable samosa, onion bhaji, malai tikka, and lamb tikka.</div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chicken Salt & Pepper <span class='hotel-menu-price'>£6.75</span></div>
+                              <div class='menu-card-desc'>Spicy, sliced chicken fried and cooked with special spices, salt, and pepper.</div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chilli Chicken <span class='hotel-menu-price'>£5.95</span></div>
+                              <div class='menu-card-desc'></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Meat Samosa <span class='hotel-menu-price'>£4.95</span></div>
+                              <div class='menu-card-desc'></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Seafood Appetizers</h3>
+                          <div class='hotel-menu-list'>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Prawn Puri <span class='hotel-menu-price'>£5.75</span></div>
+                              <div class='menu-card-desc'>Prawns cooked with Nepalese spices served with puri bread.</div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>King Prawn Puri <span class='hotel-menu-price'>£7.75</span></div>
+                              <div class='menu-card-desc'>Prawns cooked with Nepalese spices served with puri bread.</div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chilli Fish <span class='hotel-menu-price'>£6.75</span></div>
+                              <div class='menu-card-desc'>Deep-fried battered pangash fish tossed in Szechuan sauce with peppers and onions. <span class='menu-card-allergen'>Contains gluten.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chilli Fried Squid <span class='hotel-menu-price'>£7.95</span></div>
+                              <div class='menu-card-desc'>Stir-fried squid tossed with crushed chili, ginger, garlic, and black pepper (hot), served with spiced yogurt chutney.</div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Salmon Tikka <span class='hotel-menu-price'>£8.95</span></div>
+                              <div class='menu-card-desc'>Infused with dill, mustard, and crushed coriander seeds, cooked in a clay oven and served with yogurt chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Lasooni Jhinga <span class='hotel-menu-price'>£9.95</span></div>
+                              <div class='menu-card-desc'>King prawn marinated with ginger, garlic, and Nepalese spices, served with yogurt chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Seafood Platter (Ideal For Two Person) <span class='hotel-menu-price'>£17.95</span></div>
+                              <div class='menu-card-desc'>A platter of lasooni jhinga, chilli fish, salmon tikka, and chilli squid. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                            </div>
+                            <div class='menu-card'>
+                              <div class='menu-card-title'>Chilli King Prawn <span class='hotel-menu-price'>£7.95</span></div>
+                              <div class='menu-card-desc'></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  } else if (btn.dataset.category === 'chefs-signature') {
+                    tabContent.innerHTML = `
+                      <div class="chefs-signature-grid">
+                        <div class='menu-card'><div class='menu-card-title'>Garlic Chilli Chicken <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'>Coated pieces of chicken cooked in Nepalese spices with fresh green chillies, spring onion, and peppers with a garlic sauce (fairly hot). <span class='menu-card-allergen'>Contains gluten and egg.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Murgh Chattinad <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'>Boneless pieces of chicken tossed with onion, coconut cream, tempered with curry leaves and mustard seeds (fairly hot). <span class='menu-card-allergen'>Contains mustard.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Chicken Curry Lababdar <span class='hotel-menu-price'>£10.95</span></div><div class='menu-card-desc'>Tender pieces of chicken cooked with onion, coconut, and ginger, served with saffron pilau rice (medium). <span class='menu-card-allergen'>Contains dairy, mustard, and nuts.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Lamb Curry Lababdar <span class='hotel-menu-price'>£11.95</span></div><div class='menu-card-desc'>Tender pieces of lamb cooked with onion, coconut, and ginger, served with saffron pilau rice (medium). <span class='menu-card-allergen'>Contains dairy, mustard, and nuts.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Chicken Kofta <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'>Minced chicken cooked in tomato and onion sauce with Nepalese herbs and spices.</div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Gurkhali Spice Chicken <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'>Boneless chicken cooked with Nepalese herbs, yogurt, and green chillies (medium-fairly hot). <span class='menu-card-allergen'>Contains dairy.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Gurkhali Spice Lamb <span class='hotel-menu-price'>£11.75</span></div><div class='menu-card-desc'>Lamb cooked with Nepalese herbs, yogurt, and green chillies (medium-fairly hot). <span class='menu-card-allergen'>Contains dairy.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Hariyali Lamb <span class='hotel-menu-price'>£11.75</span></div><div class='menu-card-desc'>Lamb cooked with fresh mint, spring onion, and Nepalese spices. <span class='menu-card-allergen'>Contains dairy.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Rara Lamb <span class='hotel-menu-price'>£11.75</span></div><div class='menu-card-desc'>Cooked with red chilli, shallots, ginger, and coriander.</div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Tandoori Lamb Chops <span class='hotel-menu-price'>£16.95</span></div><div class='menu-card-desc'>Lamb chops served with masala mashed potato and moilee sauce. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Rogan Josh Style Lamb Shank <span class='hotel-menu-price'>£14.95</span></div><div class='menu-card-desc'>Slow, pot-cooked with tomato, fresh herbs, and spices. <span class='menu-card-allergen'>Contains dairy.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Namaste Special Chicken <span class='hotel-menu-price'>£13.75</span></div><div class='menu-card-desc'>Strips of barbecue flavored chicken cooked with fresh green pepper, onions, fresh tomato sauce, and Nepalese herbs (medium). <span class='menu-card-allergen'>Contains dairy and nuts.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Namaste Special Lamb <span class='hotel-menu-price'>£14.75</span></div><div class='menu-card-desc'>Strips of barbecue flavored lamb cooked with fresh green pepper, onions, fresh tomato sauce, and Nepalese herbs (medium). <span class='menu-card-allergen'>Contains dairy and nuts.</span></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Butter Chicken <span class='hotel-menu-price'>£9.95</span></div><div class='menu-card-desc'></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Chilli Garlic King Prawn <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Chicken Lasoon Khursani <span class='hotel-menu-price'>£11.95</span></div><div class='menu-card-desc'></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Chefs Special Ctm <span class='hotel-menu-price'>£10.95</span></div><div class='menu-card-desc'></div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Grilled Fish And Chips <span class='hotel-menu-price'>£14.95</span></div><div class='menu-card-desc'></div></div>
+                      </div>
+                    `;
+                  } else if (btn.dataset.category === 'main-courses') {
+                    tabContent.innerHTML = `
+                      <div class="hotel-menu-columns">
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Wood Fire Tandoori Dishes</h3>
+                          <div class='hotel-menu-list'>
+                            <div class='menu-card'><div class='menu-card-title'>Paneer Shaslik <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'>Spiced coated cubes of cottage cheese, grilled onions, peppers, and tomatoes served on a sizzler. <span class='menu-card-allergen'>Contains dairy.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Tandoori Mix Grill <span class='hotel-menu-price'>£16.95</span></div><div class='menu-card-desc'>A combination of tandoori chicken, malai tikka, chicken tikka, lamb tikka, and a mixed kebab.</div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Tandoori King Prawn <span class='hotel-menu-price'>£16.95</span></div><div class='menu-card-desc'>Marinated king prawns cooked with various spices in a clay oven.</div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Half Tandoori Chicken <span class='hotel-menu-price'>£6.95</span></div><div class='menu-card-desc'>On the bone. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Full Tandoori Chicken <span class='hotel-menu-price'>£11.95</span></div><div class='menu-card-desc'>On the bone. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Chicken Tikka (Main) <span class='hotel-menu-price'>£9.45</span></div><div class='menu-card-desc'>Boneless. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Lamb Tikka (Main) <span class='hotel-menu-price'>£10.95</span></div><div class='menu-card-desc'>Boneless. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Chicken Shaslik <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'>Boneless. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Lamb Shaslik <span class='hotel-menu-price'>£11.75</span></div><div class='menu-card-desc'>Boneless. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Seafood Dishes</h3>
+                          <div class='hotel-menu-list'>
+                            <div class='menu-card'><div class='menu-card-title'>Goan Fish Curry <span class='hotel-menu-price'>£12.95</span></div><div class='menu-card-desc'>Pangash fish cooked with mustard seeds, curry leaves, coconut milk, and Nepalese herbs. <span class='menu-card-allergen'>Contains mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>King Prawn Moilee <span class='hotel-menu-price'>£15.95</span></div><div class='menu-card-desc'>King prawns cooked with mustard seeds, curry leaves, crushed ginger, shallots, coconut milk, and fresh lemon juice. <span class='menu-card-allergen'>Contains mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Roasted Salmon <span class='hotel-menu-price'>£17.75</span></div><div class='menu-card-desc'>Marinated fish with dill, mustard, honey, and green chili, cooked in a clay oven and served with roasted vegetables. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Garlic Fish <span class='hotel-menu-price'>£11.95</span></div><div class='menu-card-desc'></div></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Special Vegetable Dishes</h3>
+                          <div class='hotel-menu-list'>
+                            <div class='menu-card'><div class='menu-card-title'>Namaste Special Vegetable <span class='hotel-menu-price'>£9.75</span></div><div class='menu-card-desc'>Fresh asparagus, mushrooms, peas, and green beans cooked in a special sauce.</div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Chilli Paneer Masala <span class='hotel-menu-price'>£9.75</span></div><div class='menu-card-desc'>Indian cottage cheese tossed with onion, pepper, soya, and chili sauce. <span class='menu-card-allergen'>Contains dairy, soya.</span></div></div>
+                            <div class='menu-card'><div class='menu-card-title'>Dal Makhani <span class='hotel-menu-price'>£8.95</span></div><div class='menu-card-desc'>A black lentil delicacy simmered overnight with fresh tomato sauce, garlic, and ginger, finished with cream and butter. <span class='menu-card-allergen'>Contains dairy.</span></div></div>
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  } else if (btn.dataset.category === 'traditional-dishes') {
+                    tabContent.innerHTML = `
+                      <div class="traditional-dishes-grid">
+      <div class='menu-card'><div class='menu-card-title'>Chicken Tikka Masala <span class='hotel-menu-price'>£9.75</span></div><div class='menu-card-desc'>Marinated & grilled chicken, cooked in yoghurt, fresh cream & a tandoori sauce. <span class='menu-card-allergen'>Mild, Dairy & Nuts</span></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Tikka Masala <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'>Marinated & grilled lamb, cooked in yoghurt, fresh cream & a tandoori sauce. <span class='menu-card-allergen'>Mild, Dairy & Nuts</span></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Tikka Masala <span class='hotel-menu-price'>£14.75</span></div><div class='menu-card-desc'>Marinated & grilled king prawn cooked in yoghurt, fresh cream & a tandoori sauce. <span class='menu-card-allergen'>Dairy & Nuts</span></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Veg Tikka Masala <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Korma <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Korma <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Korma <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Korma <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Korma <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Passanda <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Passanda <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Passanda <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Passanda <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Passanda <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Curry <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Curry <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Curry <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Curry <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Curry <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Madras <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Madras <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Madras <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Madras <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Madras <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Vindaloo <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Vindaloo <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Vindaloo <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Vindaloo <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Vindaloo <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Balti <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Balti <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Balti <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Balti <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Balti <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Bhuna <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Bhuna <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Bhuna <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Bhuna <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Bhuna <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Jalfrezi <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Jalfrezi <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Jalfrezi <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Jalfrezi <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Jalfrezi <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Saag <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Saag <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Saag <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Saag <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Saag <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Karahi <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Karahi <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Karahi <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Karahi <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Karahi <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Pathia <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Pathia <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Pathia <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Pathia <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Pathia <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Dansak <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Dansak <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Dansak <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Dansak <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Dansak <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Dopiaza <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Dopiaza <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Dopiaza <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Dopiaza <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Dopiaza <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Vegetables Rogan Josh <span class='hotel-menu-price'>£7.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Rogan Josh <span class='hotel-menu-price'>£9.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Rogan Josh <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Rogan Josh <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Rogan Josh <span class='hotel-menu-price'>£13.95</span></div><div class='menu-card-desc'></div></div>
+    </div>
+                    `;
+                  } else if (btn.dataset.category === 'biryani-dishes') {
+                    tabContent.innerHTML = `
+    <div class="biryani-dishes-grid">
+      <div class='menu-card'><div class='menu-card-title'>Vegetable Biryani <span class='hotel-menu-price'>£10.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chicken Biryani <span class='hotel-menu-price'>£11.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Lamb Biryani <span class='hotel-menu-price'>£12.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Prawn Biryani <span class='hotel-menu-price'>£11.75</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>King Prawn Biryani <span class='hotel-menu-price'>£15.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Namaste Mix Briyani <span class='hotel-menu-price'>£13.75</span></div><div class='menu-card-desc'></div></div>
+    </div>
+  `;
+                  } else if (btn.dataset.category === 'sides-accompaniments') {
+                    tabContent.innerHTML = `
+    <div class="sides-accompaniments-grid">
+      <div class='hotel-menu-card'>
+        <h3 class='hotel-menu-title'>Vegetable Side Dishes</h3>
+        <div class='hotel-menu-list'>
+          <div class='menu-card'><div class='menu-card-title'>Saag Bhaji <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Fresh spinach cooked with roasted garlic and onion</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Saag Paneer <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Dairy, Fresh spinach stir fried with garlic, cumin and paneer, finished with a touch of cream</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Tadka Daal <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Dairy, Yellow lentils with ginger, garlic, tomato, green chillies and finished with fresh coriander</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Bhindi Bhaji <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Cooked with carom seed, tomatoes & garlic</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Bombay Aloo <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Baby potatoes cooked with tomato gravy</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Chana Masala <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Chickpeas gently cooked & simmered in curry sauce & herbs</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Mushroom Bhaji <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Button mushrooms cooked with tomato & onion</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Aloo Gobi <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Cauliflower florets and potatoes tossed with cumin & turmeric</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Saag Aloo <span class='hotel-menu-price'>£5.25</span></div><div class='menu-card-desc'>Spinach & potatoes</div></div>
+        </div>
+      </div>
+      <div class='hotel-menu-card'>
+        <h3 class='hotel-menu-title'>Accompaniments</h3>
+        <div class='hotel-menu-list'>
+          <div class='menu-card'><div class='menu-card-title'>Saffron Flavoured Pilau Rice <span class='hotel-menu-price'>£3.50</span></div><div class='menu-card-desc'>Dairy</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Egg Fried Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Mushroom Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'>Dairy</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Garlic Fried Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Coconut Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Special Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'>Peas and Egg</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Keema Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'>Dairy</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Chips <span class='hotel-menu-price'>£3.45</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Raita <span class='hotel-menu-price'>£3.45</span></div><div class='menu-card-desc'>Cucumber, Yoghurt</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Green Salad <span class='hotel-menu-price'>£3.50</span></div><div class='menu-card-desc'>Cucumber, Carrot, Tomato, Lettuce, Red Onion</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Papadoms <span class='hotel-menu-price'>£1.00</span></div><div class='menu-card-desc'>Served With Home Made Chutney Each</div></div>
+          <div class='menu-card'><div class='menu-card-title'>Pickle Tray <span class='hotel-menu-price'>£1.25</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Curry Sauce <span class='hotel-menu-price'>£2.95</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Side Souce (Any) <span class='hotel-menu-price'>£3.95</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Chips And Nuggets <span class='hotel-menu-price'>£6.95</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Spicy Chips <span class='hotel-menu-price'>£3.95</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Veg Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'></div></div>
+          <div class='menu-card'><div class='menu-card-title'>Onion Rice <span class='hotel-menu-price'>£3.75</span></div><div class='menu-card-desc'></div></div>
+        </div>
+      </div>
+      <div class='hotel-menu-card'>
+        <h3 class='hotel-menu-title'>Other Sides</h3>
+        <div class='hotel-menu-list'>
+          <!-- Add more sides or accompaniments here if needed -->
+        </div>
+      </div>
+    </div>
+  `;
+                  } else if (btn.dataset.category === 'breads') {
+                    tabContent.innerHTML = `
+    <div class="breads-grid">
+      <div class='menu-card'><div class='menu-card-title'>Plain Naan <span class='hotel-menu-price'>£2.50</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Garlic & Coriander Naan <span class='hotel-menu-price'>£2.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Peshwari Naan <span class='hotel-menu-price'>£3.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chilli Naan <span class='hotel-menu-price'>£3.50</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Keema Naan <span class='hotel-menu-price'>£3.50</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Cheese Naan <span class='hotel-menu-price'>£3.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Tandoori Roti <span class='hotel-menu-price'>£2.75</span></div><div class='menu-card-desc'>wholemeal bread</div></div>
+      <div class='menu-card'><div class='menu-card-title'>Chapati <span class='hotel-menu-price'>£1.95</span></div><div class='menu-card-desc'>wholemeal bread</div></div>
+      <div class='menu-card'><div class='menu-card-title'>Paratha <span class='hotel-menu-price'>£3.25</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Aloo Paratha <span class='hotel-menu-price'>£3.50</span></div><div class='menu-card-desc'></div></div>
+    </div>
+  `;
+                  } else if (btn.dataset.category === 'set-meals-buffets') {
+                    tabContent.innerHTML = `
+    <div class="set-meals-buffets-grid">
+      <div class='menu-card'><div class='menu-card-title'>Set Meal For 1 <span class='hotel-menu-price'>£25.00</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Set Meal For 2 <span class='hotel-menu-price'>£30.95</span></div><div class='menu-card-desc'>Two papadoms, pickle tray / STARTER onion bhaji, chicken tikka MAIN COURSE chicken tikka masala, lamb bhuna, saag aloo, pilau rice, plain naan</div></div>
+      <div class='menu-card'><div class='menu-card-title'>Set Meal For 4 <span class='hotel-menu-price'>£55.95</span></div><div class='menu-card-desc'>Four papadoms, pickle tray STARTER onion bhaji, veg samosa, chicken tikka, lamb tikka MAIN COURSE chicken tikka masala, chicken jalfrezi, lamb curry, prawn bhuna, bombay aloo, saag aloo, 2 pilau rice 2 plain naan</div></div>
+      <div class='menu-card'><div class='menu-card-title'>Sunday Buffet For Adult <span class='hotel-menu-price'>£19.95</span></div><div class='menu-card-desc'></div></div>
+      <div class='menu-card'><div class='menu-card-title'>Sunday Buffet For Children <span class='hotel-menu-price'>£7.95</span></div><div class='menu-card-desc'></div></div>
+    </div>
+  `;
+                  } else if (btn.dataset.category === 'drinks') {
+                    tabContent.innerHTML = `
+                      <div class="hotel-menu-columns">
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Soft Drinks</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">Coke Pint <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Diet Coke Pint <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Lemonade Pint <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Soda Water Pint <span class="menu-card-desc">£3.75</span></div>
+                            <div class="menu-card">Orange Juice Pint <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Apple Juice Pint <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Regular Coke <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">Regular Diet Coke <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">Lemonade <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">Soda Water <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">Tonic Water <span class="menu-card-desc">£2.50</span></div>
+                            <div class="menu-card">Ginger Ale <span class="menu-card-desc">£3.20</span></div>
+                            <div class="menu-card">330ml Still Water <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">330ml Sparkling Water <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">750ml Still Water <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">750ml Sparkling Water <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">Orange Juice <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">Apple Juice <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">J2o Apple & Mango <span class="menu-card-desc">£3.50</span></div>
+                            <div class="menu-card">J2o Orange & Passion Fruit <span class="menu-card-desc">£3.50</span></div>
+                            <div class="menu-card">Sweet Lassi <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">Salted Lassi <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">Mango Lassi <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">Cordial Blackcurrant <span class="menu-card-desc">£1.00</span></div>
+                            <div class="menu-card">Cordial Lime <span class="menu-card-desc">£1.00</span></div>
+                            <div class="menu-card">125ml Mixture <span class="menu-card-desc">£1.95</span></div>
+                            <div class="menu-card">Coffee <span class="menu-card-desc">£2.50</span></div>
+                            <div class="menu-card">Tea <span class="menu-card-desc">£2.50</span></div>
+                            <div class="menu-card">Masala Tea <span class="menu-card-desc">£2.95</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Vodka Gin Rum</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">Smirnoff Vodka (Red) 37.5% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Belvedere Vodka 40% <span class="menu-card-desc">£4.95</span></div>
+                            <div class="menu-card">Grey Goose Vodka (Red) 40% <span class="menu-card-desc">£5.20</span></div>
+                            <div class="menu-card">Gordon's Gin 37.5% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Bombay Sapphire 40% <span class="menu-card-desc">£4.95</span></div>
+                            <div class="menu-card">Hendrick's Gin 40.0% <span class="menu-card-desc">£5.20</span></div>
+                            <div class="menu-card">Captain Morgan Spiced 35% <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">Bacardi 37.5% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Malibu 21% <span class="menu-card-desc">£3.95</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Aperitifs and Liqueurs</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">Amaretto (Disaronno) 28% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Archers 18% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Tiamaria 20% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Cointreau 40% <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">Tequilla 38% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Sambuca 38% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Drambuie 40% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Jagermeister 35% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Baileys 17% <span class="menu-card-desc">£4.95</span></div>
+                            <div class="menu-card">Campari 25% <span class="menu-card-desc">£4.95</span></div>
+                            <div class="menu-card">Pimms 25% <span class="menu-card-desc">£4.95</span></div>
+                            <div class="menu-card">Martini-Sweet 15% <span class="menu-card-desc">£4.45</span></div>
+                            <div class="menu-card">Martini-Dry 15% <span class="menu-card-desc">£4.45</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>White Wine</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">Pinot Grigio 250ml <span class="menu-card-desc">£7.50</span></div>
+                            <div class="menu-card">Pinot Grigio 175ml <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">Pinot Grigio Bottle <span class="menu-card-desc">£21.95</span></div>
+                            <div class="menu-card">Pinot Grigio 125ml <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Sauvignon Blanc Chile 250ml <span class="menu-card-desc">£7.50</span></div>
+                            <div class="menu-card">Sauvignon Blanc Chile 175ml <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">Sauvignon Blanc Bottle <span class="menu-card-desc">£21.95</span></div>
+                            <div class="menu-card">Chardonnay Gran Reserva, Terra Vega <span class="menu-card-desc">£25.95</span></div>
+                            <div class="menu-card">Kokaso Sauvginon Blanc <span class="menu-card-desc">£26.95</span></div>
+                            <div class="menu-card">Chablis <span class="menu-card-desc">£35.95</span></div>
+                            <div class="menu-card">Sancerre Blanc <span class="menu-card-desc">£35.95</span></div>
+                            <div class="menu-card">Pouily-Fume Pierre Brevin <span class="menu-card-desc">£33.95</span></div>
+                            <div class="menu-card">Valle Berta Gavi <span class="menu-card-desc">£26.95</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Red Wine</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">175ml Flor Del Fuego Cabernet Sauvigon <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">250ml Flor Del Fuego Cabernet Sauvigon <span class="menu-card-desc">£7.95</span></div>
+                            <div class="menu-card">Flor Del Fuego Cabernet Sauvigon Bottle <span class="menu-card-desc">£21.95</span></div>
+                            <div class="menu-card">175ml Crescendo Merlot <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">250ml Crescendo Merlot <span class="menu-card-desc">£7.50</span></div>
+                            <div class="menu-card">Crescendo Merlot Bottle <span class="menu-card-desc">£21.95</span></div>
+                            <div class="menu-card">Under The Sycamore Shiraz <span class="menu-card-desc">£21.95</span></div>
+                            <div class="menu-card">Conde De Castile Crianza, Rioja <span class="menu-card-desc">£24.95</span></div>
+                            <div class="menu-card">Tierra Plata Malbec <span class="menu-card-desc">£26.95</span></div>
+                            <div class="menu-card">Domaine Du Sabot Beaujolais Villages <span class="menu-card-desc">£29.95</span></div>
+                            <div class="menu-card">Esprit De Lussac St-Emillion <span class="menu-card-desc">£31.95</span></div>
+                            <div class="menu-card">Les Clefs Du Cellier Chateu Neuf-Du-Pape <span class="menu-card-desc">£45.95</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Rose Wine</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">175ml Ombrellino Point Grigio Rose Delle Venezie Doc <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">250ml Ombrellino Pinot Grigio Rose Delle Venezie Doc <span class="menu-card-desc">£7.95</span></div>
+                            <div class="menu-card">Ombrellino Pinot Grigio Rose Delle Venezie Doc Bottle <span class="menu-card-desc">£21.95</span></div>
+                            <div class="menu-card">175ml Hangloose White Zinfandel Rose <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">250ml Hangloose White Zinfandel Rose <span class="menu-card-desc">£7.95</span></div>
+                            <div class="menu-card">Hangloose White Zinfandel Rose Bottle <span class="menu-card-desc">£21.95</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Champagne and Sparkling Wine</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">Prosecco Bel Canto <span class="menu-card-desc">£25.95</span></div>
+                            <div class="menu-card">20cl Prosecco Bel Canto <span class="menu-card-desc">£7.95</span></div>
+                            <div class="menu-card">Bel Canto Rose <span class="menu-card-desc">£24.95</span></div>
+                            <div class="menu-card">Paul Drouet Brut <span class="menu-card-desc">£63.95</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Draught Beer</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">Cobra Pint <span class="menu-card-desc">£5.75</span></div>
+                            <div class="menu-card">Cobra Half Pint <span class="menu-card-desc">£2.95</span></div>
+                            <div class="menu-card">Pint Shandy <span class="menu-card-desc">£5.25</span></div>
+                            <div class="menu-card">Half Shandy <span class="menu-card-desc">£2.75</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Bottle Beer and Cider</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">660ml Gurkha <span class="menu-card-desc">£6.50</span></div>
+                            <div class="menu-card">330ml Kingfisher <span class="menu-card-desc">£4.25</span></div>
+                            <div class="menu-card">568ml Magners <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">500ml Kopperberg <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">500ml Doombar <span class="menu-card-desc">£5.95</span></div>
+                            <div class="menu-card">Heineken <span class="menu-card-desc">£2.95</span></div>
+                          </div>
+                        </div>
+                        <div class='hotel-menu-card'>
+                          <h3 class='hotel-menu-title'>Whisky and Cognac</h3>
+                          <div class='hotel-menu-list'>
+                            <div class="menu-card">Famous Grouse 40% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Jameson 40% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Jack Daniel's 40% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Johnnie Walker Black Label 40% <span class="menu-card-desc">£3.95</span></div>
+                            <div class="menu-card">Glenfiddich (Single Malt) 40% <span class="menu-card-desc">£4.50</span></div>
+                            <div class="menu-card">Martell 40% <span class="menu-card-desc">£4.20</span></div>
+                            <div class="menu-card">Courvoisier Vs 40% <span class="menu-card-desc">£4.50</span></div>
+                            <div class="menu-card">Double Jd Coke <span class="menu-card-desc">£7.95</span></div>
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  } else if (btn.dataset.category === 'all') {
+                    tabContent.innerHTML = `
+                      <h2 class="menu-section-title">All Menu Highlights</h2>
+                      <div class="all-menu-grid">
+                        <div class="menu-card">
+                          <div class="menu-card-title">Onion Bhaji <span class="hotel-menu-price">£4.75</span></div>
+                          <div class="menu-card-desc">Crispy nuggets of potato, onion, and coriander seeds deep-fried, served with a cucumber and carrot chutney. <span class="menu-card-allergen">Contains egg.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chicken Tikka Masala <span class="hotel-menu-price">£9.75</span></div>
+                          <div class="menu-card-desc">Marinated & grilled chicken, cooked in yoghurt, fresh cream & a tandoori sauce. <span class="menu-card-allergen">Mild, Dairy & Nuts</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Paneer Tikka <span class="hotel-menu-price">£5.25</span></div>
+                          <div class="menu-card-desc">Indian cottage cheese marinated with yogurt and spices, cooked in a clay oven. <span class="menu-card-allergen">Contains dairy.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Garlic Chilli Chicken <span class="hotel-menu-price">£10.75</span></div>
+                          <div class="menu-card-desc">Coated pieces of chicken cooked in Nepalese spices with fresh green chillies, spring onion, and peppers with a garlic sauce (fairly hot). <span class="menu-card-allergen">Contains gluten and egg.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Lamb Curry Lababdar <span class="hotel-menu-price">£11.95</span></div>
+                          <div class="menu-card-desc">Tender pieces of lamb cooked with onion, coconut, and ginger, served with saffron pilau rice (medium). <span class="menu-card-allergen">Contains dairy, mustard, and nuts.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">King Prawn Moilee <span class="hotel-menu-price">£15.95</span></div>
+                          <div class="menu-card-desc">King prawns cooked with mustard seeds, curry leaves, crushed ginger, shallots, coconut milk, and fresh lemon juice. <span class="menu-card-allergen">Contains mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chilli Paneer Masala <span class="hotel-menu-price">£9.75</span></div>
+                          <div class="menu-card-desc">Indian cottage cheese tossed with onion, pepper, soya, and chili sauce. <span class="menu-card-allergen">Contains dairy, soya.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Dal Makhani <span class="hotel-menu-price">£8.95</span></div>
+                          <div class="menu-card-desc">A black lentil delicacy simmered overnight with fresh tomato sauce, garlic, and ginger, finished with cream and butter. <span class="menu-card-allergen">Contains dairy.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chicken Kofta <span class="hotel-menu-price">£5.75</span></div>
+                          <div class="menu-card-desc">Minced balls of chicken stir-fried with a chef's special sauce.</div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Tandoori Mix Grill <span class="hotel-menu-price">£16.95</span></div>
+                          <div class="menu-card-desc">A combination of tandoori chicken, malai tikka, chicken tikka, lamb tikka, and a mixed kebab.</div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Goan Fish Curry <span class="hotel-menu-price">£12.95</span></div>
+                          <div class="menu-card-desc">Pangash fish cooked with mustard seeds, curry leaves, coconut milk, and Nepalese herbs. <span class="menu-card-allergen">Contains mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chilli Garlic Mushroom <span class="hotel-menu-price">£4.95</span></div>
+                          <div class="menu-card-desc">Herbs and spices-coated fresh mushrooms, sizzled with a hint of chili and garlic. <span class="menu-card-allergen">Contains egg and gluten.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chicken Shaslik <span class="hotel-menu-price">£10.75</span></div>
+                          <div class="menu-card-desc">Boneless. <span class="menu-card-allergen">Contains dairy, mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Vegetable Samosa <span class='hotel-menu-price'>£4.75</span></div>
+                          <div class="menu-card-desc">Crispy fried crushed samosa stuffed with potato, peas, and Nepalese spices, served with cucumber and carrots chutney. <span class='menu-card-allergen'>Contains gluten.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Butter Chicken <span class="hotel-menu-price">£9.95</span></div>
+                          <div class="menu-card-desc"></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Lasooni Jhinga <span class="hotel-menu-price">£9.95</span></div>
+                          <div class="menu-card-desc">King prawn marinated with ginger, garlic, and Nepalese spices, served with yogurt chutney. <span class="menu-card-allergen">Contains dairy and mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Mixed Platter <span class="hotel-menu-price">£12.95</span></div>
+                          <div class="menu-card-desc">A selection of vegetable samosa, onion bhaji, malai tikka, and lamb tikka.</div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chicken Salt & Pepper <span class="hotel-menu-price">£6.75</span></div>
+                          <div class="menu-card-desc">Spicy, sliced chicken fried and cooked with special spices, salt, and pepper.</div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chilli King Prawn <span class="hotel-menu-price">£7.95</span></div>
+                          <div class="menu-card-desc"></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Tandoori King Prawn <span class="hotel-menu-price">£16.95</span></div>
+                          <div class="menu-card-desc">Marinated king prawns cooked with various spices in a clay oven.</div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chilli Fish <span class="hotel-menu-price">£6.75</span></div>
+                          <div class="menu-card-desc">Deep-fried battered pangash fish tossed in Szechuan sauce with peppers and onions. <span class="menu-card-allergen">Contains gluten.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chicken Tikka (Main) <span class='hotel-menu-price'>£9.45</span></div>
+                          <div class="menu-card-desc">Boneless. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Lamb Tikka (Main) <span class='hotel-menu-price'>£10.95</span></div>
+                          <div class="menu-card-desc">Boneless. <span class='menu-card-allergen'>Contains dairy, mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Chicken Tikka <span class='hotel-menu-price'>£5.75</span></div>
+                          <div class="menu-card-desc">Boneless chicken marinated with ginger, garlic, and coriander, served with cucumber and carrots chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Lamb Tikka <span class='hotel-menu-price'>£6.75</span></div>
+                          <div class="menu-card-desc">Boneless lamb marinated with ginger, garlic, and coriander, served with cucumber and carrots chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Seekh Kebab <span class='hotel-menu-price'>£6.25</span></div>
+                          <div class="menu-card-desc">Minced lamb and chicken marinated with ginger, garlic, and coriander, served with cucumber and carrot chutney. <span class='menu-card-allergen'>Contains egg.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Malai Tikka <span class='hotel-menu-price'>£6.75</span></div>
+                          <div class="menu-card-desc">Marinated with fresh cream, yogurt, cheese, ginger, garlic, and cashew nuts, cooked in a clay oven. <span class='menu-card-allergen'>Contains nuts and dairy.</span></div>
+                        </div>
+                        <div class="menu-card">
+                          <div class="menu-card-title">Lamb Chops <span class='hotel-menu-price'>£8.95</span></div>
+                          <div class="menu-card-desc">Lamb chops marinated with garlic, ginger, crushed black pepper, yogurt, and mint, served with a cucumber chutney. <span class='menu-card-allergen'>Contains dairy and mustard.</span></div>
+                        </div>
+                      </div>
+                    `;
+                  } else {
+                    tabContent.innerHTML = `
+                      <div class="desserts-grid">
+                        <div class='menu-card'><div class='menu-card-title'>Any Dessert <span class='hotel-menu-price'>£4.95</span></div><div class='menu-card-desc'>Choose from our daily selection of desserts.</div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Ice Cream (3 scoops) <span class='hotel-menu-price'>£3.95</span></div><div class='menu-card-desc'>Vanilla, chocolate, or strawberry.</div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Gulab Jamun <span class='hotel-menu-price'>£4.50</span></div><div class='menu-card-desc'>Sweet milk dumplings in rose syrup.</div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Rasmalai <span class='hotel-menu-price'>£4.95</span></div><div class='menu-card-desc'>Soft cheese patties in sweetened milk, garnished with pistachios.</div></div>
+                        <div class='menu-card'><div class='menu-card-title'>Mango Kulfi <span class='hotel-menu-price'>£4.25</span></div><div class='menu-card-desc'>Traditional Indian mango ice cream.</div></div>
+                      </div>
+                    `;
+                  }
+                });
+              });
+
+              // Open Appetizers tab by default
+              const appetizersBtn = document.querySelector('.tab-btn[data-category="appetizers"]');
+              if (appetizersBtn) {
+                appetizersBtn.click();
+              }
+            });
+            </script>
+        </div>
+    </section>
+
+    <!-- Interiors 360 View Section -->
+    <section id="gallery" class="section gallery-section" aria-label="Gallery">
+       <div class="section-header">
+                <h2>Food Gallery</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">A visual feast of our creations</p>
+            </div>
+            <div class="food-gallery-grid">
+                <div class="loading-indicator" style="text-align:center;padding:2em;color:#bfa16c;">Loading gallery...</div>
+            </div>
+        <div class="container">
+    <section id="interiors" class="section interiors-section" style="padding: 5rem 0 2rem 0;">
+    <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+      <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2.2rem; color: #22223b; margin-bottom: 1rem;">Explore our restaurant in 360°</h2>
+        <div class="divider" style="width: 80px; height: 4px; background: #bfa16c; margin: 0 auto;"></div>
+      </div>
+      <div class="interior-card" style="width: 100%; max-width: 700px; margin: 0 auto; box-shadow: 0 8px 32px rgba(34, 34, 59, 0.18), 0 2px 8px rgba(58, 58, 89, 0.10); border-radius: 18px; overflow: hidden;">
+        <div class="interior-iframe-wrap" style="width: 100%; aspect-ratio: 16/9; position: relative; background: #22223b;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!4v1754068231556!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRFo5WURsY3c.!2m2!1d52.90827286341877!2d-0.6383419752452977!3f160!4f0!5f0.7820865974627469" 
+            loading="lazy" 
+            allowfullscreen 
+            style="width: 100%; height: 100%; border: none; display: block; background: #22223b;"
+            aria-label="360° view of our restaurant entrance">
+          </iframe>
+          <div style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: #fff; padding: 10px 18px; border-radius: 40px; font-size: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.18); display: flex; align-items: center;">
+            <i class="fas fa-location-arrow" style="margin-right: 8px; color: #bfa16c;"></i>
+            <span>Entrance View</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+    @media (max-width: 900px) {
+      .interior-card { max-width: 98vw !important; }
+      .interior-iframe-wrap { height: 260px !important; }
+      .section-header h2 { font-size: 1.5rem !important; }
+    }
+    @media (max-width: 600px) {
+      .interior-card { max-width: 100vw !important; border-radius: 10px !important; }
+      .interior-iframe-wrap { height: 160px !important; }
+      .section-header h2 { font-size: 1.1rem !important; }
+      .divider { width: 40px !important; }
+    }
+    </style>
+    </section>
+
+ 
+               
+        </div>
+    </section>
+
+    <!-- Book a Table Section -->
+    <section id="contact" class="section contact-section" aria-label="Book a Table">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visit Us</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">We'd love to serve you</p>
+            </div>
+            <div class="contact-content">
+        <div class="contact-info">
+          <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Location</h3>
+            <p>53-57 London Road, Grantham, United Kingdom</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-phone"></i>
+            <h3>Phone</h3>
+            <p>(01476) 123 456</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-clock"></i>
+            <h3>Hours</h3>
+            <p>Monday - Sunday: 11:00 AM - 10:00 PM</p>
+          </div>
+        </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="../logo-image/thisislogo.png" alt="Namaste Grantham Logo">
+                    </div>
+                    <p>Bringing authentic Nepali and Indian flavors to Grantham since 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for special offers and events</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your Email" required aria-label="Email">
+                        <button type="submit">Subscribe</button>
+                        <div id="newsletterFeedback" style="color:crimson;font-size:0.95rem;margin-top:8px;display:none;"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Namaste Grantham. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Booking Form Overlay -->
+    <div id="bookingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease;">
+        <div id="bookingForm" style="position: fixed; width: 90%; max-width: 450px; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 50px rgba(0,0,0,0.2); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1); transform: scale(0.8); opacity: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0;">
+                <h3 style="margin: 0; color: #22223b; font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #bfa16c, #8b6b3d); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Reserve a Table</h3>
+                <button id="closeBookingForm" style="background: #f8f8f8; width: 36px; height: 36px; border: none; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; color: #666;">
+                    &times;
+                </button>
+            </div>
+            <form id="tableBookingForm" style="display: grid; gap: 20px;">
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95rem;">Full Name</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-user" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #bfa16c;"></i>
+                        <input type="text" required style="width: 100%; padding: 14px 14px 14px 45px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;" placeholder="Your name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95rem;">Phone Number</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-phone" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #bfa16c;"></i>
+                        <input type="tel" required style="width: 100%; padding: 14px 14px 14px 45px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;" placeholder="Your phone number">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95rem;">Date</label>
+                        <div style="position: relative;">
+                            <i class="far fa-calendar" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #bfa16c;"></i>
+                            <input type="date" required style="width: 100%; padding: 14px 14px 14px 45px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95rem;">Time</label>
+                        <div style="position: relative;">
+                            <i class="far fa-clock" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #bfa16c;"></i>
+                            <input type="time" required style="width: 100%; padding: 14px 14px 14px 45px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95rem;">Number of Guests</label>
+                    <div style="position: relative;">
+                        <i class="fas fa-users" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #bfa16c; z-index: 1;"></i>
+                        <select required style="width: 100%; padding: 14px 14px 14px 45px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; appearance: none; background: white; cursor: pointer; transition: all 0.3s ease;">
+                            <option value="">Select guests</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6+ People</option>
+                        </select>
+                        <i class="fas fa-chevron-down" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #999; pointer-events: none;"></i>
+                    </div>
+                </div>
+
+                <button type="submit" style="background: linear-gradient(135deg, #bfa16c, #8b6b3d); color: white; border: none; padding: 16px; border-radius: 12px; font-size: 1.05rem; font-weight: 600; margin-top: 10px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(191, 161, 108, 0.3);">
+                    <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Book Now
+                </button>
+
+                <p style="text-align: center; margin: 0; margin-top: 10px; color: #888; font-size: 0.9rem;">
+                    We'll confirm your reservation shortly
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action-btn" id="bookTableBtn" style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;">
+        <button class="fab-btn" style="width: auto; min-width: 160px; height: 60px; border-radius: 30px; background: linear-gradient(135deg, #bfa16c, #8b6b3d); border: none; color: white; font-size: 16px; font-weight: 600; box-shadow: 0 6px 25px rgba(191, 161, 108, 0.4); cursor: pointer; display: flex; justify-content: center; align-items: center; padding: 0 25px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; text-transform: uppercase; letter-spacing: 0.5px;">
+            Book-A-Table
+            <span class="fab-tooltip" style="position: absolute; right: 100%; margin-right: 15px; background: #22223b; color: white; padding: 8px 15px; border-radius: 20px; font-size: 14px; white-space: nowrap; pointer-events: none; opacity: 0; transition: all 0.3s ease; transform: translateX(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">Click to Reserve Your Table</span>
+        </button>
+    </div>
+
+    <style>
+        /* Form input focus effects */
+        input:focus, select:focus {
+            outline: none;
+            border-color: #bfa16c !important;
+            box-shadow: 0 0 0 3px rgba(191, 161, 108, 0.2);
+        }
+
+        /* Button hover effects */
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(191, 161, 108, 0.4) !important;
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(1px);
+        }
+
+        /* Close button hover effect */
+        #closeBookingForm:hover {
+            background: #f0f0f0 !important;
+            color: #333 !important;
+        }
+
+        /* Form group styling */
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        /* Animation for the form */
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Custom scrollbar for the select dropdown */
+        select::-ms-expand {
+            display: none;
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
+
+    <script>
+        const bookTableBtn = document.getElementById('bookTableBtn');
+        const bookingOverlay = document.getElementById('bookingOverlay');
+        const bookingForm = document.getElementById('bookingForm');
+        const closeBookingForm = document.getElementById('closeBookingForm');
+        const tableBookingForm = document.getElementById('tableBookingForm');
+        let isFormOpen = false;
+        let buttonRect;
+
+        // Show booking form with animation from the button
+        bookTableBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (isFormOpen) return;
+            
+            isFormOpen = true;
+            buttonRect = this.getBoundingClientRect();
+            
+            // Position the form at the button's location
+            bookingForm.style.position = 'fixed';
+            bookingForm.style.left = `${buttonRect.left + (buttonRect.width / 2)}px`;
+            bookingForm.style.top = `${buttonRect.top + (buttonRect.height / 2)}px`;
+            bookingForm.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            
+            // Show overlay
+            bookingOverlay.style.display = 'block';
+            setTimeout(() => {
+                bookingOverlay.style.opacity = '1';
+            }, 10);
+            
+            // Animate form to center
+            setTimeout(() => {
+                bookingForm.style.left = '50%';
+                bookingForm.style.top = '50%';
+                bookingForm.style.transform = 'translate(-50%, -50%) scale(1)';
+                bookingForm.style.opacity = '1';
+            }, 20);
+            
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close booking form with animation
+        function closeForm() {
+            if (!isFormOpen) return;
+            
+            // Animate back to button position
+            bookingForm.style.left = `${buttonRect.left + (buttonRect.width / 2)}px`;
+            bookingForm.style.top = `${buttonRect.top + (buttonRect.height / 2)}px`;
+            bookingForm.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            bookingForm.style.opacity = '0';
+            
+            // Hide overlay
+            bookingOverlay.style.opacity = '0';
+            
+            setTimeout(() => {
+                bookingOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+                isFormOpen = false;
+            }, 300);
+        }
+
+        // Close form when clicking X or outside the form
+        closeBookingForm.addEventListener('click', closeForm);
+        bookingOverlay.addEventListener('click', function(e) {
+            if (e.target === bookingOverlay) {
+                closeForm();
+            }
+        });
+
+        // Handle form submission
+        tableBookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your server
+            // For now, we'll show a success message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Booking...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Booked!';
+                submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    closeForm();
+                    tableBookingForm.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = 'linear-gradient(135deg, #bfa16c, #8b6b3d)';
+                }, 1500);
+            }, 1500);
+        });
+
+        // Close form with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isFormOpen) {
+                closeForm();
+            }
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[type="date"]').min = today;
+    </script>
+
+    <script>
+        // Highlight active navigation link based on scroll position
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // Function to update active link
+            function updateActiveLink() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Update on scroll
+            window.addEventListener('scroll', updateActiveLink);
+            
+            // Update on page load
+            updateActiveLink();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100, // Adjust for header height
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active class after scroll
+                        setTimeout(updateActiveLink, 1000);
+                    }
+                });
+            });
+        });
+    </script>
+  <script type="module" src="../js/home.js"></script>
+</body>
+</html>

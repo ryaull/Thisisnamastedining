@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="admin-container">
+    <header>
+      <h2>Admin Panel</h2>
+      <button id="logoutBtn" class="button-secondary">Logout</button>
+    </header>
+
+    <nav class="admin-nav">
+      <a href="#" id="nav-dashboard" class="admin-nav-link active">Dashboard</a>
+      <a href="#" id="nav-menu" class="admin-nav-link">Menu</a>
+      <a href="#" id="nav-orders" class="admin-nav-link">Orders</a>
+      <a href="#" id="nav-tags" class="admin-nav-link">Tag Management</a>
+    </nav>
+
+    <div id="dashboard-section" class="admin-page-section">
+      <div class="admin-dashboard">
+        <div class="stat-card">
+          <h4>Total Orders</h4>
+          <p id="total-orders-stat">0</p>
+        </div>
+        <div class="stat-card">
+          <h4>Total Revenue</h4>
+          <p id="total-revenue-stat">$0.00</p>
+        </div>
+        <div class="stat-card">
+          <h4>Pending Orders</h4>
+          <p id="pending-orders-stat">0</p>
+        </div>
+        <div class="stat-card">
+          <h4>Completed Orders</h4>
+          <p id="completed-orders-stat">0</p>
+        </div>
+      </div>
+      <div class="admin-dashboard-main">
+        <div class="admin-section">
+          <h3>Recent Activity</h3>
+          <div id="recent-activity-feed"></div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div id="menu-section" class="admin-page-section" hidden>
+      <div class="admin-main-content">
+        <div class="admin-section">
+          <h3>Add Menu Item</h3>
+          <form id="add-item-form" class="styled-form">
+            <label for="item">Item Name:</label>
+            <input id="item" placeholder="E.g., Pizza" required>
+            <label for="price">Price:</label>
+            <input id="price" placeholder="E.g., 12.99" type="number" step="0.01" required>
+            <label for="currency-add">Currency:</label>
+            <select id="currency-add" required>
+              <option value="INR">₹ Indian Rupees</option>
+              <option value="USD">$ US Dollar</option>
+              <option value="GBP">£ Pound Sterling</option>
+              <option value="EUR">€ Euro</option>
+              <option value="JPY">¥ Japanese Yen</option>
+            </select>
+            <label for="description">Description:</label>
+            <textarea id="description" placeholder="E.g., A delicious cheese pizza" required></textarea>
+            <label for="tags">Tags:</label>
+            <div id="selected-tags-container"></div>
+            <div id="tags-container"></div>
+            <input type="hidden" id="tags" name="tags">
+            <button type="button" id="clear-tags-btn">Clear Selection</button>
+            <label for="image">Image:</label>
+            <input id="image" type="file">
+            <button type="submit" id="addItem">Add Item</button>
+          </form>
+        </div>
+
+        <div class="admin-section">
+          <h3>Menu</h3>
+          <table id="menuTable">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th data-sort="name">Name &#x2195;</th>
+                <th data-sort="price">Price &#x2195;</th>
+                <th>Description</th>
+                <th>Tags</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="menuBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="orders-section" class="admin-page-section" hidden>
+      <h3>All Orders</h3>
+      <label for="orderTagFilter">Filter Orders by Item Tags:</label>
+      <input type="text" id="orderTagFilter" list="suggested-tags" placeholder="e.g., Vegetarian, Spicy">
+      <div id="orders"></div>
+    </div>
+
+    <div id="tags-section" class="admin-page-section" hidden>
+      <div class="admin-section">
+        <h3>Manage Tags</h3>
+        <div class="tags-management-layout">
+          <div class="tags-sidebar">
+            <form id="add-category-form" class="styled-form">
+              <input type="text" id="newCategoryName" placeholder="Create new category" required>
+              <button type="submit" class="button-primary">Add Category</button>
+            </form>
+            <div id="category-list"></div>
+          </div>
+          <div class="tags-main-content">
+            <div id="tags-display-area">
+              <h4 id="selected-category-title">Select a category</h4>
+              <div id="tags-list"></div>
+              <form id="add-tag-form" class="styled-form">
+                <input type="text" id="newTagName" placeholder="Add a new tag" required>
+                <button type="submit" class="button-primary">Add Tag</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Modal Title</h3>
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="modal-body">
+        <!-- Modal content will be injected here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Template for the Edit Menu Item Modal -->
+  <template id="edit-item-template">
+    <form id="edit-item-form">
+      <label>Name</label>
+      <input name="name" required>
+      <label>Price</label>
+      <input name="price" type="number" step="0.01" required>
+      <label for="currency-edit">Currency:</label>
+      <select name="currency" id="currency-edit" required>
+        <option value="INR">₹ Indian Rupees</option>
+        <option value="USD">$ US Dollar</option>
+        <option value="GBP">£ Pound Sterling</option>
+        <option value="EUR">€ Euro</option>
+        <option value="JPY">¥ Japanese Yen</option>
+      </select>
+      <label>Description</label>
+      <textarea name="description" required></textarea>
+      <label>Tags</label>
+      <input name="tags" placeholder="E.g., vegetarian, spicy, popular" readonly id="edit-tags">
+      
+      <label>Image:</label>
+      <input name="image" type="file">
+      <button type="submit">Save Changes</button>
+    </form>
+  </template>
+
+  <!-- Template for the Delete Confirmation Modal -->
+  <template id="delete-item-template">
+    <div>
+      <p>Are you sure you want to delete <strong></strong>?</p>
+      <button class="confirm-delete-btn">Yes, Delete</button>
+    </div>
+  </template>
+
+  
+  <div id="toast-container"></div>
+  
+  
+  
+  <script type="module">
+    import { setupAdminAuth } from '/js/adminAuth.js';
+    import { renderMenu } from '/js/adminMenu.js';
+    import { setupAdminOrders } from '/js/adminOrders.js';
+    import { setupModal } from '/js/ui.js';
+    import { setupAdminNavigation } from '/js/adminNavigation.js';
+    import { setupAdminDashboard } from '/js/adminDashboard.js';
+    import { setupAdminTags } from '/js/adminTags.js';
+    import { setupAdminSettings } from '/js/adminSettings.js';
+
+    setupModal();
+    setupAdminAuth();
+    renderMenu();
+    setupAdminNavigation();
+    setupAdminDashboard();
+    await setupAdminSettings();
+    setupAdminOrders();
+
+    document.getElementById('nav-tags').addEventListener('click', async () => {
+      await setupAdminTags();
+    });
+
+    if (document.getElementById('nav-tags').classList.contains('active')) {
+      setupAdminTags();
+    }
+  </script>
+</body>
+</html>
+
+
+

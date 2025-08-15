@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="login-container">
+    <button type="button" id="googleBtn" class="google-login-btn">
+      <span class="google-icon">
+        <svg width="32" height="32" viewBox="0 0 48 48">
+          <g>
+            <circle cx="24" cy="24" r="24" fill="#EA4335"/>
+            <path d="M34.6 24.3c0-1.1-.1-2.1-.3-3.1H24v5.9h6c-.3 1.6-1.3 2.9-2.7 3.8v3.1h4.4c2.6-2.4 4.1-5.9 4.1-9.7z" fill="#fff"/>
+            <path d="M24 38c3.2 0 5.9-1.1 7.9-3l-4.4-3.1c-1.2.8-2.7 1.3-4.3 1.3-3.3 0-6.1-2.2-7.1-5.2h-4.5v3.2C13.9 35.8 18.6 38 24 38z" fill="#fff"/>
+            <path d="M16.9 28.1c-.3-.8-.5-1.7-.5-2.6s.2-1.8.5-2.6v-3.2h-4.5C11.6 21.8 11 23.8 11 26s.6 4.2 1.4 6l4.5-3.2z" fill="#fff"/>
+            <path d="M24 18.7c1.7 0 3.2.6 4.4 1.7l3.3-3.3C29.9 15.1 27.2 14 24 14c-5.4 0-10.1 2.2-13.1 5.7l4.5 3.2c1-3 3.8-5.2 7.1-5.2z" fill="#fff"/>
+          </g>
+        </svg>
+      </span>
+      Login with Google
+    </button>
+  </div>
+  <style>
+    html, body {
+      width: 100%;
+      min-width: 0;
+      max-width: 100vw;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-size: 1rem;
+    }
+    .login-container {
+      position: absolute;
+      top: 5vw;
+      right: 5vw;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: auto;
+      max-width: 90vw;
+    }
+    .google-login-btn {
+      background: linear-gradient(90deg, #EA4335 0%, #FF6F61 100%);
+      color: #fff;
+      border: none;
+      border-radius: 32px;
+      padding: 3vw 7vw;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(234,67,53,0.15);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 2vw;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+      animation: pulseRedGlow 1.2s infinite alternate;
+      width: 100%;
+      max-width: 400px;
+    }
+    .google-login-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 32px rgba(234,67,53,0.25);
+      background: linear-gradient(90deg, #FF6F61 0%, #EA4335 100%);
+    }
+    .google-icon {
+      margin-right: 2vw;
+      display: flex;
+      align-items: center;
+    }
+    @keyframes pulseRedGlow {
+      0% { box-shadow: 0 4px 16px rgba(234,67,53,0.15); }
+      100% { box-shadow: 0 8px 32px rgba(234,67,53,0.35); }
+    }
+    @media (max-width: 600px) {
+      .login-container {
+        top: 2vw;
+        right: 2vw;
+        align-items: center;
+        width: 100vw;
+        max-width: 100vw;
+      }
+      .google-login-btn {
+        padding: 4vw 8vw;
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
+        max-width: 98vw;
+      }
+      .google-icon {
+        margin-right: 3vw;
+      }
+    }
+  </style>
+</body>
+</html>
